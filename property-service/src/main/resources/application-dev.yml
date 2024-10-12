@@ -1,0 +1,26 @@
+server:
+  port: 8086
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: cloud-property-service
+  # 配置数据库连接
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/property_db_cloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+
+knife4j:
+  # 开启增强模式，对knife4j的接口测试以及文档编写进行一定个性化设置
+  enable: true
+  setting:
+    language: zh_cn
+    enable-open-api: true
+  basic:
+    enable: false # 是否设置BasicHttp功能 开启则需设置进入Knife4j的账号密码
+
