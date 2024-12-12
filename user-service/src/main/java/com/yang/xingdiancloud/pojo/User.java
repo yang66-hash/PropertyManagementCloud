@@ -1,6 +1,8 @@
 package com.yang.xingdiancloud.pojo;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -21,7 +23,7 @@ public class User {
      * 也可以直接使用@TableId对应主键，或者使用@TableField实现属性对应
      * 自增主键
      */
-
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**

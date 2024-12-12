@@ -3,37 +3,25 @@ package com.yang.xingdiancloud.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yang.enums.ResponseStatusEnum;
 import com.yang.model.ResponseDTO;
 import com.yang.xingdiancloud.pojo.User;
 import com.yang.xingdiancloud.service.impl.UserService;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.reactive.ReactorLoadBalancerExchangeFilterFunction;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Slf4j
 @RestController
 @RequestMapping("user")
 public class UserController {
-
-
 
     private final UserService userService;
     private final WebClient.Builder clientBuilder;
@@ -119,7 +107,28 @@ public class UserController {
             resultMap.put("payVisitRes",payVisitRes);
             log.info(UserController.class +"  " + "getAllWithUserId" + "  exit successfully ...");
             return ResponseDTO.success(ResponseStatusEnum.SUCCESS,resultMap);
-        }).onErrorReturn(ResponseDTO.failure(ResponseStatusEnum.SERVICE_UNAVAILABLE));
+        });
+    }
+
+
+    @GetMapping("searchDataNums")
+    public Integer searchDataNumsAndInsertData(@RequestParam(value = "minId")Integer minId,
+                              @RequestParam(value = "maxId")Integer maxId) {
+        int total = 0;
+        for (int i = minId; i < maxId; i++) {
+            if (userService.existData(i))
+                total++;
+        }
+        User user = new User();
+        Random random = new Random();
+        user.setId(null);
+        user.setUserName("刘"+random.nextInt(10000));
+        user.setRegisterAddress("江西省");
+        user.setPhone("15845678745");
+        user.setNation("江西省");
+        user.setSex("男");
+        userService.save(user);
+        return total;
     }
 
 }

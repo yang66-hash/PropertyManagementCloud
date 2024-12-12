@@ -21,4 +21,10 @@ class UserServiceTest {
 
         System.out.println(userService.getDataByPage(user,1,5).getRecords());
     }
+
+    @Test
+    public void testSearchData() {
+
+        System.out.println(userService.existData(1));
+    }
 }

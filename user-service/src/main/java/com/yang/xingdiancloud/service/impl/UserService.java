@@ -19,7 +19,6 @@ public class UserService extends ServiceImpl<UserMapper, User> implements IUserS
     @Autowired
     private UserMapper userMapper;
 
-
     public IPage getDataByPage(User user, int page, int rows) {
         IPage<User> curPage = new Page<>(page,rows);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
@@ -32,5 +31,15 @@ public class UserService extends ServiceImpl<UserMapper, User> implements IUserS
                 .like(user.getRegisterAddress()!=null,User::getRegisterAddress,user.getRegisterAddress());
         return  userMapper.selectPage(curPage,queryWrapper);
 
+    }
+
+    public boolean existData(int userId) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",userId);
+        Long count = userMapper.selectCount(queryWrapper);
+        if (count > 0) {
+            return true;
+        }
+        else return false;
     }
 }
