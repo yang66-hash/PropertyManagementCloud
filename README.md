@@ -26,3 +26,6 @@
 |  house-service   |      住房管理服务       |
 | property-service |      物业管理服务       |
 |   user-service   |      住户管理服务       |
+
+## 部署说明
+怎么打成jar，并部署至K8S集群，参见admin-service的README.md
