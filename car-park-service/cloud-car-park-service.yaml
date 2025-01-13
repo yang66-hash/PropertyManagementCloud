@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-car-park-service
+  namespace: apm-test
+  labels:
+    app: cloud-car-park-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8089
+      targetPort: 8089
+  selector:
+    app: cloud-car-park-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-car-park-service
+  namespace: apm-test
+  labels:
+    app: cloud-car-park-service
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-car-park-service
+  template:
+    metadata:
+      labels:
+        app: cloud-car-park-service
+    spec:
+      containers:
+        - name: cloud-car-park-service
+          image: 10.245.1.233:5000/apm-test/cloud-car-park-service:1.0.0
+          ports:
+            - containerPort: 8089
+          volumeMounts:
+            - name: apm-agent-volume
+              mountPath: /app/agent
+          env:
+            - name: "ELASTIC_APM_APPLICATION_PACKAGES"
+              value: "com.yang.xingdiancloud"
+            - name: "ELASTIC_APM_ENABLE_EXPERIMENTAL_INSTRUMENTATIONS"
+              value: "true"
+            - name: "ELASTIC_APM_AGENTS_DIR"
+              value: "/app/agent/elastic-apm-agent-1.52.1.jar"
+            - name: "ELASTIC_APM_PLUGINS_DIR"
+              value: "/app/agent/plugins"
+            - name: "ELASTIC_APM_SERVER_URL"
+              value: "http://apm-server.apm-test:8200"
+            - name: "ELASTIC_APM_SERVICE_NAME"
+              value: "cloud-car-park-service"
+      volumes:
+        - name: apm-agent-volume
+          persistentVolumeClaim:
+            claimName: apm-agent-pvc

@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apm-server
+  namespace: apm-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apm-server
+  template:
+    metadata:
+      labels:
+        app: apm-server
+    spec:
+      containers:
+        - name: apm-server
+          image: docker.elastic.co/apm/apm-server:8.14.3
+          ports:
+            - containerPort: 8200
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+          volumeMounts:
+            - mountPath: /usr/share/apm-server/apm-server.yml
+              name: config
+              subPath: apm-server.docker.yml
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: apm-server
+          name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apm-server
+  namespace: apm-test
+spec:
+  type: NodePort
+  ports:
+    - port: 8200
+      targetPort: 8200
+      nodePort: 30001
+  selector:
+    app: apm-server
