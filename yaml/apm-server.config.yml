@@ -1,0 +1,10 @@
+apm-server:
+  host: "0.0.0.0:8200"
+  kibana:
+    hosts: ["http://kibana.apm-test:5601"]
+    username: "elastic"
+    password: "changeme"
+output.elasticsearch:
+  hosts: ["http://elasticsearch.apm-test:9200"]
+  username: "elastic"
+  password: "change"

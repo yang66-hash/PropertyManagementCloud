@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/apm-server/apm-server.yml
               name: config
-              subPath: apm-server.docker.yml
+              subPath: apm-server.config.yml
       volumes:
         - configMap:
             defaultMode: 420

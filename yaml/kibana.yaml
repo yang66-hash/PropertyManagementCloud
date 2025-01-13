@@ -46,7 +46,7 @@ spec:
             - name: ELASTICSEARCH_USERNAME
               value: "kibana_system"
             - name: ELASTICSEARCH_PASSWORD
-              value: "rtRPf6v6APOfZ1d1iWRk"
+              value: "changeme"  # replace with your password of kibana_system account in elasticsearch
           ports:
             - containerPort: 5601
 
