@@ -9,8 +9,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8089
-      targetPort: 8089
+    - port: 8086
+      targetPort: 8086
   selector:
     app: cloud-property-service
 ---
@@ -36,7 +36,7 @@ spec:
         - name: cloud-property-service
           image: 10.245.1.233:5000/apm-test/cloud-property-service:1.0.0
           ports:
-            - containerPort: 8089
+            - containerPort: 8086
           volumeMounts:
             - name: apm-agent-volume
               mountPath: /app/agent

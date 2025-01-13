@@ -81,7 +81,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.48</version>
+                <version>8.0.33</version>
             </dependency>
             <!--lombok 用来简化实体类的编写，减少相应类中基础方法的编写-->
             <dependency>
@@ -89,11 +89,11 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.30</version>
             </dependency>
-            <!--注意 SpringBoot3的依赖与Spring Boot2的MybatisPlus并不相同 错用会报错-->
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
             <dependency>
                 <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-                <version>3.5.5</version>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.7</version>
             </dependency>
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
@@ -110,7 +110,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
+                <version>2.2.3.RELEASE</version>
             </dependency>
 
             <dependency>
@@ -128,7 +128,6 @@
 
         </dependencies>
     </dependencyManagement>
-
 
 
 </project>
