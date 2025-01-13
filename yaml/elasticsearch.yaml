@@ -1,0 +1,97 @@
+# 创建命名空间
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: apm-test
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: es-cluster
+  namespace: apm-test
+spec:
+  serviceName: elasticsearch-cluster
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+        - name: elasticsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
+          resources:
+            limits:
+              memory: "8000Mi"
+              cpu: 4000m
+            requests:
+              memory: "4000Mi"
+              cpu: 2000m
+          ports:
+            - containerPort: 9200
+              name: rest
+              protocol: TCP
+            - containerPort: 9300
+              name: inter-node
+              protocol: TCP
+          volumeMounts:
+            - name: es-data
+              mountPath: /usr/share/elasticsearch/data
+          env:
+            - name: discovery.type
+              value: "single-node"
+            - name: cluster.name
+              value: elasticsearch
+            - name: "xpack.security.http.ssl.enabled" # 去除https加密验证 采用http明文通信
+              value: "false"
+            - name: "xpack.security.enabled"
+              value: "false" # 禁用用户认证和角色管理，完全关闭 Elasticsearch 的安全功能（仅开发环境使用）
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: node.name
+              value: "$(NODE_NAME).elasticsearch"
+            - name: ES_JAVA_OPTS
+              value: "-Xms512m -Xmx512m"
+      initContainers:
+        - name: increase-vm-max-map
+          image: busybox
+          command: ["sysctl", "-w", "vm.max_map_count=262144"]
+          securityContext:
+            privileged: true
+  volumeClaimTemplates:
+    - metadata:
+        name: es-data
+        labels:
+          app: elasticsearch
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: nfs-storageclass
+        resources:
+          requests:
+            storage: 25Gi
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: elasticsearch
+  namespace: apm-test
+  labels:
+    app: elasticsearch
+spec:
+  selector:
+    app: elasticsearch
+  type: NodePort
+  ports:
+    - port: 9200
+      targetPort: 9200
+      nodePort: 32000
+      name: rest
+    - port: 9300
+      targetPort: 9300
+      name: inter-node
