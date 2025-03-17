@@ -56,6 +56,8 @@ public class PropertyChargeVisitController {
     public ResponseDTO getDataById(@RequestParam(value = "id") Integer id) {
         if (id == null || id <= 0)
             return ResponseDTO.failure(ResponseStatusEnum.PARAM_IS_INVALID);
+        PropertyChargeVisit propertyChargeVisit = propertyChargeVisitService.getById(id);
+        Object o = restTemplate.getForObject("http://house-service/house/getDataById?id=" + propertyChargeVisit.getHouseId(), Object.class);
         return ResponseDTO.success(propertyChargeVisitService.getById(id));
     }
 

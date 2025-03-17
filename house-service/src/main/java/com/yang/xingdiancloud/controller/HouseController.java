@@ -44,6 +44,8 @@ public class HouseController {
     public ResponseDTO getDataById(@RequestParam(value = "id") Integer id) {
         if (id == null || id <= 0)
             return ResponseDTO.failure(ResponseStatusEnum.PARAM_IS_INVALID);
+        House house = houseService.getById(id);
+        Object o = restTemplate.getForObject("http://car-park-service/car_park/getDataById?id=" + house.getOwnerId(), Object.class);
         return ResponseDTO.success(houseService.getById(id));
     }
 
