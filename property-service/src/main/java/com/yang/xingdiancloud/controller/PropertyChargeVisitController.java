@@ -9,11 +9,13 @@ import com.yang.xingdiancloud.pojo.PropertyChargeItem;
 import com.yang.xingdiancloud.pojo.PropertyChargeVisit;
 import com.yang.xingdiancloud.service.impl.PropertyChargeItemService;
 import com.yang.xingdiancloud.service.impl.PropertyChargeVisitService;
+import jakarta.annotation.Resource;
 import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @RestController
@@ -22,6 +24,9 @@ public class PropertyChargeVisitController {
 
 
     private final PropertyChargeVisitService propertyChargeVisitService;
+
+    @Resource
+    private RestTemplate restTemplate;
 
     public PropertyChargeVisitController(PropertyChargeVisitService propertyChargeVisitService) {
         this.propertyChargeVisitService = propertyChargeVisitService;

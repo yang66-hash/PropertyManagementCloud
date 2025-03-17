@@ -6,8 +6,10 @@ import com.yang.enums.ResponseStatusEnum;
 import com.yang.model.ResponseDTO;
 import com.yang.xingdiancloud.pojo.House;
 import com.yang.xingdiancloud.service.impl.HouseService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @RestController
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 public class HouseController {
 
     private final HouseService houseService;
+
+    @Resource
+    private RestTemplate restTemplate;
 
     public HouseController(HouseService houseService) {
         this.houseService = houseService;
