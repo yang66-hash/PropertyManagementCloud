@@ -45,7 +45,9 @@ kubectl apply -f storageclass.yaml
 kubectl apply -f elasticsearch.yaml
 # 6 kibana
 kubectl apply -f kibana.yaml
-# 7 apm-server
+# 7 apm-server-configmap
+kubectl apply -f apm-server-configmap.yaml
+# 8 apm-server
 kubectl apply -f apm-server.yaml
-# 8 end . we run all the components in apm-test namespace
+# 9 end . we run all the components in apm-test namespace
 ```

@@ -11,6 +11,8 @@ import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping("admin")
+@RefreshScope
 public class AdminController {
 
     private final AdminService adminService;
@@ -28,6 +31,13 @@ public class AdminController {
 
     }
 
+    @Value("${test.value}")
+    String testValue;
+
+    @GetMapping("test")
+    public ResponseDTO getTestProperties(){
+        return ResponseDTO.success(testValue);
+    }
 
     /**
      * @param admin 查询条件  userName loginName 两者不空进行查询 空直接忽略条件进行查询
