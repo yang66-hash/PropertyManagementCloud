@@ -20,6 +20,22 @@ git clone -b microservice-template https://github.com/yang66-hash/PropertyManage
 * 启动cloud-gateway，动态路由配置以及负载均衡可以查看gateway的配置文件信息
 
 在本地运行，并无需额外配置，使用的是Java jdk 17, maven3.x即可。各个服务加载完依赖即可直接启动运行
+
+## 各个文件夹说明
+
+|        模块        |       功能说明        |
+|:----------------:|:-----------------:|
+|      common      | 各个模块依赖的基础类相关公共子工程 |
+|  admin-service   |    小区物业管理员管理服务    |
+| car-park-service |      停车位管理服务      |
+|  house-service   |      住房管理服务       |
+| property-service |      物业管理服务       |
+|   user-service   |      住户管理服务       |
+|   clou-gateway   |       API网关       |
+|  config-center   |    配置中心如何启动的说明    |
+| register-center  |   服务注册中心如何启动的说明   |
+
+
 ## 部署说明
 怎么打成jar，并部署至K8S集群，参见admin-service的README.md(这一部分是由我其他项目工作引用而来，还未完全修改，并不是直接可以用，因为里面参入了一些其他的额外配置)
 后续会继续修改
