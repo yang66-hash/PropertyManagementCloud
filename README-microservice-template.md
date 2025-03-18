@@ -26,6 +26,9 @@ git clone -b microservice-template https://github.com/yang66-hash/PropertyManage
 ![img.png](images/img.png)
 各个服务的启动端口
 ![img.png](images/img-1.png)
+
+各个微服务的接口查看、测试界面可以通过Knife4j提供的接口访问：localhost:PORT/doc.html, 示例如下：
+![img.png](images/img-2.png)
 ## 各个文件夹说明
 
 |        模块        |       功能说明        |
