@@ -1,67 +1,28 @@
 # 这是README-microservice-template说明文档
+<div align="center">
+    <img src="https://img.shields.io/badge/microservice_template-微服务模板-green" style="zoom: 1.5;"/>
+</div>
+<br>
 
-<!-- TOC -->
-* [Property Management Cloud说明文档](#property-management-cloud说明文档)
-  * [系统说明](#系统说明)
-  * [服务模块](#服务模块)
-  * [部署说明](#部署说明)
-  * [This project is built for following purpose](#this-project-is-built-for-following-purpose)
-  * [related Documentation](#related-documentation)
-<!-- TOC -->
+## 关于这个分支
+这个分支旨在提供一个分布式微服务模板示例。
 
-## 关于这个项目
-本项目是基于微服务架构开发的小区物业管理系统，主要用于演示微服务系统的基础架构，非完整业务实现。适用于以下场景：
-- 理解Spring Cloud多模块微服务项目结构
-- 学习小区物业系统业务逻辑划分方案
-- 初学微服务的案例参考，简单入门Spring Boot的后端开发模式
+## 拉取并运行
+```shell
+git clone -b microservice-template https://github.com/yang66-hash/PropertyManagementCloud.git 
+```
 
-本微服务系统依据xingdian-property-management-system(基于Spring Boot3)小区物业管理系统进行模块拆分实现。
-(注：其中的业务逻辑|模块拆分只是基于个人意见,能力有限划分恐有不合理之处，如果您发现不妥之处，还请指正)
+请按照如下顺序依次启动服务：
+* 在此之前，请安装并启动nacos2.0.x nacos server
+* 依照config-center中说明文档将服务注册到nacos
+* 依照register-center中说明文档将配置文件持久化存储至nacos配置中心(可选)
+* 无顺序启动cloud-admin-service|cloud-property-service|cloud-house-service|cloud-user-service|cloud-car-park-service业务服务
+* 启动cloud-gateway，动态路由配置以及负载均衡可以查看gateway的配置文件信息
 
-## 系统说明
-
-|              框架 /工具               |   功能    |     版本     |
-|:---------------------------------:|:-------:|:----------:|
-|            spring boot            |  核心框架   |   3.2.4    |
-|           spring cloud            |  核心框架   |  2023.0.1  |
-|       spring cloud alibaba        |  核心框架   | 2023.0.1.0 |
-|    spring-boot-starter-webflux    |  服务调用   |   3.2.4    |
-| spring-cloud-starter-loadbalancer |  负载均衡   |  2023.0.1  |
-|               MYSQL               |   数据库   |    5.7     |
-|            MybatisPlus            |  ORM框架  |   3.5.5    |
-|           Nacos Server            | 服务注册和发现 |   2.0.3    |
-|              Knife4j              |  API文档  |   4.4.0    |
-
-
-## 服务模块说明
-
-|        模块        |       功能说明        |
-|:----------------:|:-----------------:|
-|      common      | 各个模块依赖的基础类相关公共子工程 |
-|  admin-service   |    小区物业管理员管理服务    |
-| car-park-service |      停车位管理服务      |
-|  house-service   |      住房管理服务       |
-| property-service |      物业管理服务       |
-|   user-service   |      住户管理服务       |
-|  Springgateway   |      统一网关路由       |
-|       auth       |       授权模块        |
-|  config-server   |       配置中心        |
-|      nacos       |   服务注册、发现、配置中心    |
-|      zipkin      |       链路监控        |
-
-
-
-许多模块仍未编入，但是提供的[property_db_cloud.sql](property_db_cloud.sql)数据库文件中已将相应的数据表搭建并填充了演示数据。
-
+在本地运行，并无需额外配置，使用的是Java jdk 17, maven3.x即可。各个服务加载完依赖即可直接启动运行
 ## 部署说明
-怎么打成jar，并部署至K8S集群，参见admin-service的README.md
-
-
-
+怎么打成jar，并部署至K8S集群，参见admin-service的README.md(这一部分是由我其他项目工作引用而来，还未完全修改，并不是直接可以用，因为里面参入了一些其他的额外配置)
+后续会继续修改
 **Suggestions and project Improvement are Invited**
-
-## related Documentation
-- [how to pull and run in local](./)
-- how to make contributions
 
 
