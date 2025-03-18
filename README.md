@@ -5,7 +5,7 @@
     <img src="https://img.shields.io/badge/microservice_template-微服务模板-green"/>
 </div>
 
-
+<br><br>
 
 
 本项目是基于微服务架构开发的小区物业管理系统，主要用于演示微服务系统的基础架构，非完整业务实现。**其下三个分支并行用于不同目的。**。需要microservice模板的关注microservice-template分支即可。
