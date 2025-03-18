@@ -23,7 +23,8 @@ git clone -b microservice-template https://github.com/yang66-hash/PropertyManage
 
 启动启动所有的服务之后，登录localhost:8848/nacos,可以查看到在dev开发环境下，有以下注册服务：
 ![img.png](images/img.png)
-
+各个服务的启动端口
+![img.png](images/img-1.png)
 ## 各个文件夹说明
 
 |        模块        |       功能说明        |
@@ -42,6 +43,8 @@ git clone -b microservice-template https://github.com/yang66-hash/PropertyManage
 ## 部署说明
 怎么打成jar，并部署至K8S集群，参见admin-service的README.md(这一部分是由我其他项目工作引用而来，还未完全修改，并不是直接可以用，因为里面参入了一些其他的额外配置)
 后续会继续修改
+
+
 **Suggestions and project Improvement are Invited**
 
 
