@@ -11,15 +11,16 @@
 ```shell
 git clone -b microservice-template https://github.com/yang66-hash/PropertyManagementCloud.git 
 ```
-
-请按照如下顺序依次启动服务：
-* 在此之前，请安装并启动nacos2.0.x nacos server
-* 依照config-center中说明文档将服务注册到nacos
-* 依照register-center中说明文档将配置文件持久化存储至nacos配置中心(可选)
-* 无顺序启动cloud-admin-service|cloud-property-service|cloud-house-service|cloud-user-service|cloud-car-park-service业务服务
-* 启动cloud-gateway，动态路由配置以及负载均衡可以查看gateway的配置文件信息
-
 在本地运行，并无需额外配置，使用的是Java jdk 17, maven3.x即可。各个服务加载完依赖即可直接启动运行。
+
+请按照如下顺序操作：
+1. 将一级文件夹下的property_db_cloud.sql数据转储到本地的mysql数据库中
+2. 执行下面操作之前，先安装并启动nacos2.0.x nacos server 
+3. 依照config-center中说明文档将服务注册到nacos 
+4. 依照register-center中说明文档将配置文件持久化存储至nacos配置中心(可选)
+5. 无顺序启动cloud-admin-service|cloud-property-service|cloud-house-service|cloud-user-service|cloud-car-park-service业务服务 
+6. 启动cloud-gateway，动态路由配置以及负载均衡可以查看gateway的配置文件信息
+
 
 启动启动所有的服务之后，登录localhost:8848/nacos,可以查看到在dev开发环境下，有以下注册服务：
 ![img.png](images/img.png)
