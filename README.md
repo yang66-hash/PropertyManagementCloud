@@ -1,8 +1,8 @@
 # Property Management Cloud说明文档
 
 <div align="center">
-    <img src="https://img.shields.io/badge/Spring_Cloud-微服务异味检测-blue" style="zoom: 1.2;"/>
-    <img src="https://img.shields.io/badge/microservice_template-微服务模板-green" style="zoom: 1.2;"/>
+    <img src="https://img.shields.io/badge/Spring_Cloud-微服务异味检测-blue" style="zoom: 1.5;"/>
+    <img src="https://img.shields.io/badge/microservice_template-微服务模板-green" style="zoom: 1.5;"/>
 </div>
 <br>
 
