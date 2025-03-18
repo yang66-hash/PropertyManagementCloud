@@ -15,6 +15,7 @@
         <module>car-park-service</module>
         <module>admin-service</module>
         <module>property-service</module>
+        <module>cloud-gateway</module>
     </modules>
 
     <properties>

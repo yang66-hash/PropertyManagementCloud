@@ -46,7 +46,7 @@
 |  Springgateway   |      统一网关路由       |
 |       auth       |       授权模块        |
 |  config-server   |       配置中心        |
-|      nacos       |      服务注册与发现      |
+|      nacos       |   服务注册、发现、配置中心    |
 |      zipkin      |       链路监控        |
 
 
