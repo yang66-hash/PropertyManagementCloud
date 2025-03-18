@@ -1,12 +1,10 @@
 # Property Management Cloud说明文档
 
 <div align="center">
-    <img src="https://img.shields.io/badge/Spring_Cloud-微服务异味检测-blue"/>
-    <img src="https://img.shields.io/badge/microservice_template-微服务模板-green"/>
+    <img src="https://img.shields.io/badge/Spring_Cloud-微服务异味检测-blue" style="zoom: 1.2;"/>
+    <img src="https://img.shields.io/badge/microservice_template-微服务模板-green" style="zoom: 1.2;"/>
 </div>
-
-<br><br>
-
+<br>
 
 本项目是基于微服务架构开发的小区物业管理系统，主要用于演示微服务系统的基础架构，非完整业务实现。**其下三个分支并行用于不同目的。**。需要microservice模板的关注microservice-template分支即可。
 
