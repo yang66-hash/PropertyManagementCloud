@@ -6,6 +6,7 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        namespace: dev
   application:
     name: cloud-user-service
   # 配置数据库连接

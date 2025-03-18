@@ -19,7 +19,10 @@ git clone -b microservice-template https://github.com/yang66-hash/PropertyManage
 * 无顺序启动cloud-admin-service|cloud-property-service|cloud-house-service|cloud-user-service|cloud-car-park-service业务服务
 * 启动cloud-gateway，动态路由配置以及负载均衡可以查看gateway的配置文件信息
 
-在本地运行，并无需额外配置，使用的是Java jdk 17, maven3.x即可。各个服务加载完依赖即可直接启动运行
+在本地运行，并无需额外配置，使用的是Java jdk 17, maven3.x即可。各个服务加载完依赖即可直接启动运行。
+
+启动启动所有的服务之后，登录localhost:8848/nacos,可以查看到在dev开发环境下，有以下注册服务：
+![img.png](images/img.png)
 
 ## 各个文件夹说明
 

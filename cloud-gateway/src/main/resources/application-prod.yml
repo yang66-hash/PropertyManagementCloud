@@ -1,0 +1,26 @@
+server:
+  port: 5000
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # Gateway会自动基于服务发现为每个服务创建路由规则 这依赖于 spring-cloud-loadbalancer 来解析服务ID进行负载均衡转发
+          url-expression: "'lb://' + serviceId"
+      routes:
+        - id: cloud-admin-service
+          uri: lb://cloud-admin-service # uri 使用了 lb:// 前缀，这表示需要进行客户端负载均衡
+          predicates:
+            - Path=/admin/**
+        - id: cloud-user-service
+          uri: lb://cloud-user-service
+          predicates:
+            - Path=/user/**
+    nacos:
+      discovery:
+        server-addr: 10.245.1.23:8848
+        namespace: prod
+

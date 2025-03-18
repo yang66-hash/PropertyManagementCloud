@@ -5,14 +5,15 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 10.245.1.233:8848
+        server-addr: 10.245.1.23:8848
+        namespace: prod
   application:
     name: cloud-car-park-service
   # 配置数据库连接
   datasource:
     username: root
-    password: hit@0631
-    url: jdbc:mysql://10.100.1.223:30006/property_db_cloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    password: root
+    url: jdbc:mysql://10.100.1.23:30006/property_db_cloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
 
 knife4j:
