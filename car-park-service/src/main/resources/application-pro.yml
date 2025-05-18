@@ -5,15 +5,15 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 10.245.1.233:8848
+        server-addr: 192.168.0.173:8848
   application:
     name: cloud-car-park-service
   # 配置数据库连接
   datasource:
     username: root
-    password: hit@0631
-    url: jdbc:mysql://10.100.1.223:30006/property_db_cloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
+    password: mysql@12345
+    url: jdbc:mysql://mysql.kt3-component.svc.cluster.local:3306/property_db_cloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 knife4j:
   # 开启增强模式，对knife4j的接口测试以及文档编写进行一定个性化设置
